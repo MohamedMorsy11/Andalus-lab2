@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معمل الأندلس - للتحاليل الإكلينيكية والباثولوجية</title>
+    
+    <!-- إضافة اللوجو في التاب (Favicon) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome للأيقونات الرسمية والواتساب الصحيح -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Premium color palette */
+        :root {
+            --primary: #0F3B6F; /* Deep Sapphire */
+            --accent: #C41E3A; /* Ruby Red */
+            --light-bg: #F8F9FB;
+            --soft-white: #FAFBFC;
+        }
+        
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Smooth transitions */
+        .transition-smooth {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: revealOnScroll 0.8s ease-out forwards;
+        }
+        
+        @keyframes revealOnScroll {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-element {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Soft shadow */
+        .shadow-soft {
+            box-shadow: 0 10px 40px rgba(15, 59, 111, 0.08);
+        }
+        
+        /* Hover scale effect */
+        .hover-scale {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Sticky WhatsApp button updated safely for mobile layouts */
+        .whatsapp-sticky {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 50;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Package card hover effect */
+        .package-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .package-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Accordion animation */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        /* Hero abstract shapes */
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .hero-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #0F3B6F, #C41E3A);
+            top: -100px;
+            right: -100px;
+        }
+        
+        .hero-shape-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #C41E3A, #0F3B6F);
+            bottom: -50px;
+            left: -50px;
+        }
+        
+        /* Discount badge animation */
+        .badge-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        
+        /* Text gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #0F3B6F, #C41E3A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Smooth hover for links */
+        a {
+            position: relative;
+        }
+        
+        .link-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #C41E3A;
+            transition: width 0.3s ease;
+        }
+        
+        .link-underline:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased overflow-x-hidden">
+    
+    <!-- Sticky WhatsApp Button -->
+    <div class="whatsapp-sticky">
+        <button onclick="openWhatsApp('مرحباً، أود الاستفسار عن خدماتكم')" 
+                class="bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full w-14 h-14 md:w-16 md:h-16 shadow-2xl transition-smooth hover:scale-110 flex items-center justify-center text-2xl md:text-3xl"
+                aria-label="تواصل عبر الواتساب">
+            <i class="fa-brands fa-whatsapp"></i>
+        </button>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- لوجو المعمل المفرغ الذكي -->
+            <a href="#" class="flex items-center shrink-0">
+                <img src="logo.png" alt="لوجو معمل الأندلس" class="h-14 md:h-16 object-contain mix-blend-multiply transition-smooth hover:scale-105" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'font-black text-xl text-[#0F3B6F]\'>معمل الأندلس</span>');" />
+            </a>
+            <div class="hidden md:flex gap-8 font-bold text-sm">
+                <a href="#features" class="text-gray-700 hover:text-[#0F3B6F] transition-smooth link-underline">المميزات</a>
+                <a href="#packages" class="text-gray-700 hover:text-[#0F3B6F] transition-smooth link-underline">الباقات</a>
+                <a href="#doctors" class="text-gray-700 hover:text-[#0F3B6F] transition-smooth link-underline">بوابة الأطباء</a>
+                <a href="#faq" class="text-gray-700 hover:text-[#0F3B6F] transition-smooth link-underline">الأسئلة الشائعة</a>
+            </div>
+            <button onclick="openWhatsApp('مرحباً، أود الاستفسار وحجز موعد في معمل الأندلس.')" 
+                    class="bg-[#0F3B6F] text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-[#C41E3A] transition-smooth shadow-md">
+                احجز الآن
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 md:pt-20 pb-24 bg-gradient-to-b from-[#F8F9FB] to-white">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6 md:space-y-8 text-center md:text-right scroll-reveal">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold tracking-wide text-[#C41E3A] bg-[#C41E3A]/10 px-4 py-1.5 rounded-full mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>
+                        إشراف استشاري أورام · معهد الأورام بطنطا
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-[#0F3B6F]">
+                        دقة التشخيص تبدأ من هنا،<br>
+                        <span class="text-[#C41E3A]">لأن صحتك تستحق الأفضل</span>
+                    </h1>
+                    
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto md:mx-0">
+                        معمل الأندلس يضمن لك نتائج دقيقة وسريعة تحت إشراف نخبة من الأطباء المتخصصين في معهد الأورام بطنطا.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="openWhatsApp('أود حجز موعد في معمل الأندلس')" 
+                                class="bg-[#0F3B6F] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#C41E3A] transition-smooth shadow-soft hover-scale w-full sm:w-auto">
+                            حجز موعد عبر الواتساب
+                        </button>
+                        <button onclick="document.getElementById('packages').scrollIntoView({behavior: 'smooth'})" 
+                                class="border-2 border-[#0F3B6F] text-[#0F3B6F] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#0F3B6F] hover:text-white transition-smooth w-full sm:w-auto">
+                            عرض الباقات المخفضة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Creative Visual Element -->
+                <div class="relative h-72 md:h-96 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#0F3B6F]/10 to-[#C41E3A]/10 rounded-3xl transform rotate-6 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tl from-[#C41E3A]/10 to-[#0F3B6F]/10 rounded-3xl transform -rotate-3 pointer-events-none"></div>
+                    <div class="relative z-10 text-center">
+                        <div class="w-44 h-44 md:w-48 md:h-48 mx-auto bg-gradient-to-br from-[#0F3B6F] to-[#C41E3A] rounded-3xl opacity-20 float-element"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa-solid fa-microscope text-5xl md:text-6xl text-[#0F3B6F]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trust Features - Bento Grid -->
+    <section id="features" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:text-center scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-black text-[#0F3B6F] mb-4">لماذا معمل الأندلس؟</h2>
+                <p class="text-gray-600 text-base md:text-lg">نقدم لك أفضل الخدمات الطبية بأعلى معايير الجودة</p>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Feature 1 -->
+                <div class="glass shadow-soft p-6 md:p-8 rounded-2xl hover-scale transition-smooth scroll-reveal">
+                    <i class="fa-solid fa-user-doctor text-3xl md:text-4xl text-[#C41E3A] mb-4 block"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 text-[#0F3B6F]">إشراف طبي متخصص</h3>
+                    <p class="text-gray-600 text-sm md:text-base">د. ريم درويش - استشاري تحاليل أنسجة وخلايا بمعهد الأورام</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass shadow-soft p-6 md:p-8 rounded-2xl hover-scale transition-smooth scroll-reveal">
+                    <i class="fa-solid fa-bullseye text-3xl md:text-4xl text-[#C41E3A] mb-4 block"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 text-[#0F3B6F]">نتائج عالية الدقة</h3>
+                    <p class="text-gray-600 text-sm md:text-base">أحدث الأجهزة الطبية والمعايير العالمية في التحليل</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="glass shadow-soft p-6 md:p-8 rounded-2xl hover-scale transition-smooth scroll-reveal">
+                    <i class="fa-brands fa-whatsapp text-3xl md:text-4xl text-[#C41E3A] mb-4 block"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 text-[#0F3B6F]">استلام عبر الواتساب</h3>
+                    <p class="text-gray-600 text-sm md:text-base">احصل على نتائجك بصيغة PDF مباشرة على هاتفك</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="glass shadow-soft p-6 md:p-8 rounded-2xl hover-scale transition-smooth scroll-reveal">
+                    <i class="fa-solid fa-house-chimney-medical text-3xl md:text-4xl text-[#C41E3A] mb-4 block"></i>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 text-[#0F3B6F]">سحب من المنزل</h3>
+                    <p class="text-gray-600 text-sm md:text-base">خدمة سحب العينات من منزلك براحة تامة وأمان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Doctors Portal - Exclusive Section -->
+    <section id="doctors" class="py-16 md:py-20 bg-gradient-to-r from-[#0F3B6F]/5 to-[#C41E3A]/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-6 text-center md:text-right scroll-reveal">
+                    <div class="inline-block bg-[#C41E3A]/10 text-[#C41E3A] px-4 py-2 rounded-full text-sm font-bold">
+                        ✨ شراكة حصرية للأطباء
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-black text-[#0F3B6F]">بوابة زملائنا الأطباء</h2>
+                    
+                    <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                        لأن دقة التشخيص هي أساس نجاح خطة العلاج، نوفر لكم أدق تحاليل الأنسجة والخلايا (Pathology) بإشراف استشاري أورام، لتكون عوناً لكم في الوصول للتشخيص السليم. نهتم بمرضاكم كاهتمامكم بهم.
+                    </p>
+                    
+                    <ul class="space-y-3 inline-block text-right">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-[#C41E3A]"></i>
+                            <span class="text-sm md:text-base font-semibold">تحاليل أنسجة وخلايا متخصصة ودقيقة</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-[#C41E3A]"></i>
+                            <span class="text-sm md:text-base font-semibold">نتائج سريعة تدعم قرارك العلاجي فوراً</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-[#C41E3A]"></i>
+                            <span class="text-sm md:text-base font-semibold">بروتوكول تعاون وخصومات خاصة لمرضاك</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="pt-2">
+                        <button onclick="openWhatsApp('مرحباً دكتورة ريم، أنا طبيب وأود الانضمام لشبكة أطباء الأندلس والتعرف على نسب الخصم لمرضاي.')" 
+                                class="bg-[#C41E3A] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#0F3B6F] transition-smooth shadow-soft hover-scale w-full sm:w-auto">
+                            انضم لشبكة أطباء الأندلس
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Visual -->
+                <div class="relative h-64 md:h-80 flex items-center justify-center scroll-reveal">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#C41E3A]/10 to-[#0F3B6F]/10 rounded-3xl pointer-events-none"></div>
+                    <div class="relative z-10 text-center">
+                        <i class="fa-solid fa-notes-medical text-5xl md:text-6xl text-[#0F3B6F] mb-4 block"></i>
+                        <p class="text-gray-700 font-bold text-base md:text-lg">شبكة متكاملة تدعم الرعاية الطبية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About The Doctor - Editorial Style -->
+    <section id="about" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 items-center">
+                <!-- Doctor Logo/Image Integration -->
+                <div class="flex justify-center scroll-reveal">
+                    <div class="bg-[#F8F9FB] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm flex items-center justify-center w-64 h-64">
+                        <img src="dr-logo.png" alt="لوجو دكتورة ريم درويش" class="w-full h-full object-contain mix-blend-multiply" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'text-5xl\'>👩‍⚕️</span>');">
+                    </div>
+                </div>
+                
+                <!-- Doctor Info -->
+                <div class="lg:col-span-2 space-y-5 text-center md:text-right scroll-reveal">
+                    <div class="inline-block border-r-4 border-[#C41E3A] pr-4 text-right">
+                        <h3 class="text-3xl font-black text-[#0F3B6F]">د/ ريم علي درويش</h3>
+                        <p class="text-[#C41E3A] font-bold mt-1 text-sm md:text-base">استشاري تحاليل أنسجة وخلايا بمعهد الأورام - طنطا</p>
+                    </div>
+                    
+                    <p class="text-gray-700 text-base md:text-lg leading-loose">
+                        تأسس معمل الأندلس للتحاليل الإكلينيكية والباثولوجية عام 2023 برؤية واضحة: تقديم أفضل الخدمات التشخيصية بأعلى معايير الجودة والدقة. تحت إشراف د. ريم درويش، استشاري متخصص في تحاليل الأنسجة الخلايا، نعمل بالتزام كامل تجاه صحة مرضاها وتوفير النتائج الدقيقة الموثوقة التي تساعد الأطباء في اتخاذ القرارات العلاجية الحرجة والصحيحة.
+                    </p>
+                    
+                    <p class="text-gray-700 text-base md:text-lg leading-loose">
+                        رسالتنا هي أن نكون دائماً الشريك الطبي الموثوق لكل مريض وطبيب، بتقديم خدمات تحليلية متقدمة وسريعة تجمع بين التكنولوجيا الحديثة والخبرة الطبية الاستشارية المتخصصة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Packages Section - Innovative Layout -->
+    <section id="packages" class="py-16 md:py-20 bg-gradient-to-b from-white to-[#F8F9FB]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-black text-[#0F3B6F] mb-4">باقاتنا وعروضنا المميزة</h2>
+                <p class="text-gray-600 text-base md:text-lg">اختر الباقة التشخيصية المناسبة لاحتياجاتك واحتياجات عائلتك صحياً</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Package 1 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <!-- تم تعديل مكان الشارة لمنع التداخل مع النصوص -->
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">أبطال الأندلس</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">للأطفال</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 41%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">499</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">850</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>صورة دم كاملة (CBC)</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>تحليل براز (Stool)</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>تحليل بول (Urine)</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>نسبة الكالسيوم</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>نسبة الحديد</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('أبطال الأندلس للأطفال', 499)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">البركة</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لكبار السن</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 38%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">525</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">850</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>وظائف كلى كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>وظائف كبد</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>سكر صائم وفاطر</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>صورة دم كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>دهون كاملة</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('البركة لكبار السن', 525)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 - Featured -->
+                <div class="package-card glass shadow-card rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between border-2 border-[#C41E3A] relative">
+                    <div class="absolute top-0 left-0 bg-gradient-to-r from-[#C41E3A] to-[#0F3B6F] text-white px-4 py-1 rounded-br-xl text-xs font-bold z-10 shadow-sm">
+                        ⭐ الأكثر طلباً
+                    </div>
+                    <div class="p-6 relative flex-grow pt-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">ميزان الصحة</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">فحص شامل</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 46%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-[#0F3B6F]/5 p-3 rounded-xl border border-[#0F3B6F]/10">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">750</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">1400</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>صورة دم كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>وظائف كبد وكلى</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>تحليل غدة درقية (TSH)</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>سكر تراكمي</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>يوريك أسيد (النقرس)</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('ميزان الصحة فحص شامل', 750)" 
+                                class="w-full bg-[#C41E3A] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#0F3B6F] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 4 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">تحدي الأنيميا</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لمرضى الأنيميا</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 44%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">450</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">800</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>صورة دم كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>مخزون الحديد</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>حديد بالدم</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>فيتامين ب12</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('تحدي الأنيميا', 450)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 5 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">مفاتيح الحرق</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لمتبعي الدايت</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 39%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">515</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">850</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>غدة درقية كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>مقاومة الإنسولين</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>سكر صائم</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>فيتامين د</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('مفاتيح الحرق لمتبعي الدايت', 515)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 6 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">حارس القلب</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لمرضى الضغط والقلب</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 37%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">500</span>
+                                <span class="text-gray-400 text-sm line-through font-bold">800</span>
+                                <span class="text-gray-600 text-sm font-bold">جنيه مصري</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>دهون كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>سكر تراكمي</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>إنزيمات القلب</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>وظائف كلى</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('حارس القلب', 500)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 7 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">الهضم الآمن</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لمشاكل الهضم</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 41%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">325</span>
+                                <span class="text-gray-500 line-through">550</span>
+                                <span class="text-gray-600 text-sm">جنيه</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>جرثومة المعدة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>تحليل براز كامل</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>دم خفي في البراز</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('الهضم الآمن', 325)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 8 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">الفلتر النقي</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">للكلى والكبد</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 32%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">650</span>
+                                <span class="text-gray-500 line-through">950</span>
+                                <span class="text-gray-600 text-sm">جنيه</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>وظائف كبد وكلى كاملة</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>إنزيمات الكبد</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>بولينا وكرياتينين</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('الفلتر النقي للكلى والكبد', 650)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 9 -->
+                <div class="package-card glass shadow-soft rounded-2xl overflow-hidden hover-scale transition-smooth scroll-reveal group flex flex-col justify-between">
+                    <div class="p-6 relative flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-black text-[#0F3B6F]">العظام والمفاصل</h3>
+                                <p class="text-gray-500 text-xs md:text-sm font-semibold mt-0.5 bg-gray-100 inline-block px-2.5 py-0.5 rounded-full">لآلام العظام</p>
+                            </div>
+                            <span class="bg-[#C41E3A] text-white px-3 py-1 rounded-full text-xs font-bold badge-pulse shadow-sm shrink-0">خصم 38%</span>
+                        </div>
+                        
+                        <div class="mb-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/60">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-[#C41E3A]">499</span>
+                                <span class="text-gray-500 line-through">800</span>
+                                <span class="text-gray-600 text-sm">جنيه</span>
+                            </div>
+                            <p class="text-[11px] text-[#C41E3A] font-bold mt-1"><i class="fa-solid fa-clock-solid"></i> لفترة محدودة جداً</p>
+                        </div>
+                        
+                        <button onclick="togglePackageTests(this)" class="w-full bg-[#0F3B6F]/10 text-[#0F3B6F] px-4 py-2.5 rounded-xl font-bold text-sm mb-4 transition-smooth hover:bg-[#0F3B6F]/20 flex items-center justify-center gap-1">
+                            <span>عرض التحاليل المشمولة</span> <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+                        </button>
+                        
+                        <div class="accordion-content bg-gray-50/70 border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 space-y-2.5 mb-4">
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>كالسيوم</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>فيتامين د</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>سرعة ترسيب</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>معامل روماتويد</p>
+                            <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#C41E3A]"></span>يوريك أسيد</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="bookPackage('باقة العظام والمفاصل', 499)" 
+                                class="w-full bg-[#0F3B6F] text-white px-4 py-3.5 rounded-xl font-bold hover:bg-[#C41E3A] transition-smooth flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> احجز العرض الآن
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-black text-[#0F3B6F] mb-4">الأسئلة الشائعة</h2>
+                <p class="text-gray-600 text-sm md:text-base">إجابات سريعة على الأسئلة التي تهم عملاءنا</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="glass shadow-soft rounded-2xl overflow-hidden scroll-reveal">
+                    <button onclick="toggleAccordion(this)" class="w-full p-5 md:p-6 flex justify-between items-center hover:bg-gray-50/80 text-right transition-smooth">
+                        <span class="text-base md:text-lg font-bold text-[#0F3B6F]">كيف أحجز موعد؟</span>
+                        <span class="text-2xl text-[#C41E3A] font-light transition-transform duration-300 pointer-events-none">+</span>
+                    </button>
+                    <div class="accordion-content px-6 text-gray-700 text-sm md:text-base leading-relaxed">
+                        <p class="pb-5">يمكنك الحجز بسهولة بالغة عبر الواتساب بالضغط على زر "احجز العرض الآن" أو الأزرار العائمة بالموقع، أو تشريفنا بالاتصال مباشرة على الرقم 01005381032.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="glass shadow-soft rounded-2xl overflow-hidden scroll-reveal">
+                    <button onclick="toggleAccordion(this)" class="w-full p-5 md:p-6 flex justify-between items-center hover:bg-gray-50/80 text-right transition-smooth">
+                        <span class="text-base md:text-lg font-bold text-[#0F3B6F]">كم يستغرق وقت النتائج؟</span>
+                        <span class="text-2xl text-[#C41E3A] font-light transition-transform duration-300 pointer-events-none">+</span>
+                    </button>
+                    <div class="accordion-content px-6 text-gray-700 text-sm md:text-base leading-relaxed">
+                        <p class="pb-5">تظهر معظم التحاليل الإكلينيكية والروتينية خلال ساعات في نفس اليوم. أما تحاليل الباثولوجي وفحوصات الأنسجة والخلايا الدقيقة، فإنها تستغرق وقتاً كافياً إضافياً لضمان منتهى الدقة والتشخيص الصحيح تماماً تحت إشراف د. ريم درويش.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="glass shadow-soft rounded-2xl overflow-hidden scroll-reveal">
+                    <button onclick="toggleAccordion(this)" class="w-full p-5 md:p-6 flex justify-between items-center hover:bg-gray-50/80 text-right transition-smooth">
+                        <span class="text-base md:text-lg font-bold text-[#0F3B6F]">هل تقدمون خدمة سحب العينات من المنزل؟</span>
+                        <span class="text-2xl text-[#C41E3A] font-light transition-transform duration-300 pointer-events-none">+</span>
+                    </button>
+                    <div class="accordion-content px-6 text-gray-700 text-sm md:text-base leading-relaxed">
+                        <p class="pb-5">نعم، نوفر خدمة سحب العينات المنزلية باحترافية كاملة من خلال فريق متخصص، حرصاً على راحة كبار السن، الأطفال، وكافة عملائنا في أي وقت يناسبهم.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="glass shadow-soft rounded-2xl overflow-hidden scroll-reveal">
+                    <button onclick="toggleAccordion(this)" class="w-full p-5 md:p-6 flex justify-between items-center hover:bg-gray-50/80 text-right transition-smooth">
+                        <span class="text-base md:text-lg font-bold text-[#0F3B6F]">كيف أستلم نتيجتي؟</span>
+                        <span class="text-2xl text-[#C41E3A] font-light transition-transform duration-300 pointer-events-none">+</span>
+                    </button>
+                    <div class="accordion-content px-6 text-gray-700 text-sm md:text-base leading-relaxed">
+                        <p class="pb-5">تسهيلاً وتوفيراً لوقتكم، نرسل لكم كافة النتائج الطبية بصيغة PDF عالية الجودة مباشرة عبر الواتساب فور الانتهاء منها واعتمادها رسمياً من الفريق الطبي للمعمل.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-gradient-to-b from-[#0F3B6F] to-[#0A2847] text-white pt-16 pb-8 border-t-4 border-[#C41E3A]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Lab Info -->
+                <div class="text-center md:text-right">
+                    <img src="logo.png" alt="لوجو المعمل" class="mix-blend-multiply h-16 bg-white rounded-xl p-2 mb-4 mx-auto md:mx-0 object-contain">
+                    <p class="text-gray-300 text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+                        معمل الأندلس للتحاليل الإكلينيكية والباثولوجية. دقة تشخيصية متميزة تحت إشراف د. ريم درويش، استشاري تحاليل أنسجة وخلايا بمعهد الأورام بطنطا.
+                    </p>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-bold mb-5 text-[#C41E3A]">معلومات التواصل</h4>
+                    <ul class="space-y-4 text-gray-300 text-sm">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-phone text-gray-400"></i>
+                            <span dir="ltr">01005381032</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-clock text-gray-400"></i>
+                            <span>من 10 صباحاً إلى 10 مساءً (الجمعة عطلة)</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-location-dot text-gray-400 mt-0.5 shrink-0"></i>
+                            <span>سبرباي - برج العياري - فوق مطعم كشري عدس - الدور الرابع</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-bold mb-5 text-[#C41E3A]">روابط سريعة</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm font-semibold">
+                        <li><a href="#features" class="hover:text-white transition-smooth">المميزات</a></li>
+                        <li><a href="#packages" class="hover:text-white transition-smooth">الباقات المخفضة</a></li>
+                        <li><a href="#doctors" class="hover:text-white transition-smooth">بوابة الأطباء</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-smooth">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="mb-10 rounded-2xl overflow-hidden shadow-2xl h-64 border border-white/10">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109159.27419139265!2d30.938883626244497!3d30.826766023719047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7c959728cb119%3A0xc3c9423d240d43a6!2sTanta%2C%20Gharbia%20Governorate!5e0!3m2!1sen!2seg!4v1715426000000!5m2!1sen!2seg" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقع معمل الأندلس"></iframe>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-700/60 pt-6 text-center text-gray-400 text-xs">
+                <p>&copy; 2026 معمل الأندلس للتحاليل الإكلينيكية والباثولوجية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Open WhatsApp with message safely
+        function openWhatsApp(message) {
+            const phoneNumber = '201005381032';
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function bookPackage(name, price) {
+            const message = `مرحباً معمل الأندلس، أرغب في حجز عرض باقة "${name}" بسعر الخصم ${price} جنيه.`;
+            openWhatsApp(message);
+        }
+        
+        // Toggle Package Tests Accordion with dynamic smooth UI and rotating arrows
+        function togglePackageTests(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                if(icon) icon.style.transform = "rotate(180deg)";
+            } else {
+                content.style.maxHeight = "0px";
+                if(icon) icon.style.transform = "rotate(0deg)";
+            }
+        }
+        
+        // Toggle Accordion for FAQs
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.text-2xl');
+            
+            // Close other accordions smoothly
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                if (el !== content && el.classList.contains('active')) {
+                    el.classList.remove('active');
+                    el.style.maxHeight = "0px";
+                    el.previousElementSibling.querySelector('.text-2xl').textContent = '+';
+                    el.previousElementSibling.querySelector('.text-2xl').style.transform = "rotate(0deg)";
+                }
+            });
+            
+            content.classList.toggle('active');
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '−';
+            } else {
+                content.style.maxHeight = "0px";
+                icon.textContent = '+';
+            }
+        }
+        
+        // Scroll Reveal Animation Delay Calculation
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${Array.from(document.querySelectorAll('.scroll-reveal')).indexOf(entry.target) * 0.05}s`;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for navigation items safely
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
